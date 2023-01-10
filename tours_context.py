@@ -1,9 +1,6 @@
-
-
 def ReadFile(filename):
-    file = open(r'tour.csv', encoding='utf-8')
-
-    filePhrases = []
-
+    file = open('tours.csv', encoding='utf-8')
+    data = []
     for line in file:
-        filePhrases.append(line.strip().split(','))
+        data.append(line.strip().split(','))
+    return data
