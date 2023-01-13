@@ -1,16 +1,15 @@
 """
-    TODO: 1. Исправить файл (tours.csv), хранящий описание туров.
-             Добавить данные: страна, город, название тура, стоимость.
-          2. В файле bot.py cоздать функцию main() для запуска бота и
-             прописать обработку команды start для запуска бота.
+    TODO: 1. Написать по подобию проекта Aiogram рабочий бот, который запускается. Всё дело в версии библиотеки.
+             То, что тут написано другой версии, мы используем уже давно новую.
              Использовать aiogram ver.3, вместо ver.2. (См. теоретический проект по Aiogram)
-          3. Написать функцию, которая получает список всех типов отдыха (уникальных)
+          2. Написать функцию, которая получает список всех типов отдыха (уникальных)
              (Использовать функцию чтения файла, которую написали в предыдущий раз)
 """
+
 from aiogram import Bot, types
 from aiogram import Dispatcher
-from aiogram.types import ContentType, KeyboardButton, ReplyKeyboardMarkup
-from aiogram import executor
+from aiogram.utils import executor
+
 from config import TOKEN
 
 bot = Bot(token=TOKEN)
