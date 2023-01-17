@@ -1,25 +1,24 @@
 """
-    TODO: 1. Написать по подобию проекта Aiogram рабочий бот, который запускается. Всё дело в версии библиотеки.
-             То, что тут написано другой версии, мы используем уже давно новую.
-             Использовать aiogram ver.3, вместо ver.2. (См. теоретический проект по Aiogram)
-          2. Написать функцию, которая получает список всех типов отдыха (уникальных)
-             (Использовать функцию чтения файла, которую написали в предыдущий раз)
+    TODO: 1. Написать функцию get_country_by_type(type) для получения списка стран,
+             в которых есть отдых необходимого типа
+          2. Написать функцию get_tours(type, country) для получения туров с соответствующими параметрами.
+          3. Необходимо написать функцию travel_type_keyboard(), которая генерирует клавиатуру
+             с типами отдыха и выводит на экран для выбора пользователем.
 """
-
-from aiogram import Bot, types
-from aiogram import Dispatcher
-from aiogram.utils import executor
-
+import asyncio
+from aiogram import Bot, Dispatcher
+from aiogram.types import BotCommand
 from config import TOKEN
-
-bot = Bot(token=TOKEN)
-dp = Dispatcher(bot)
+from handlers import common
 
 
-def main():
-    @dp.message_handler(commands=['start', 'старт'])
-    async def process_start_command(message: types.Message):
-        await message.answer("Вас приветствует Тревел бот. Я помогу вам найти тур для путишествия подходяший именно вам.")
+async def main():
+    bot = Bot(token=TOKEN)
+    dp = Dispatcher()
+    dp.include_router(common.router)
+    await bot.set_my_commands([BotCommand(command='start', description='Старт')])
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+
 
 if __name__ == '__main__':
-    executor.start_polling(dp)
+    asyncio.run(main())
