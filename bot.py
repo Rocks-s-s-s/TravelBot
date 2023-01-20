@@ -10,7 +10,10 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand
 from config import TOKEN
 from handlers import common
+import tours_context
 
+def travel_type_keyboard():
+    pass
 
 async def main():
     bot = Bot(token=TOKEN)
