@@ -16,25 +16,20 @@ def get_types_rest(filename):
         types.add(line[3])
     return types
 
-def get_country_by_type(filename,type):
-    #читаем файлы из файла
+
+def get_country_by_type(filename, type):
     filedata = read_file(filename)[1:]
-    contry = set()
+    country = set()
     for line in filedata:
         if type == line[3]:
-            contry.add(line[0])
-    return contry
+            country.add(line[0])
+    return country
 
-def get_tours(filename,type, country):
+
+def get_tours(filename, type, country):
     filedata = read_file(filename)[1:]
-    tyrse = []
+    tours = []
     for line in filedata:
         if country == line[0] and type == line[3]:
-            tyrse.append(line)
-    return tyrse
-
-
-#type= "Пляжный"
-#country =  "Бали"
-#tyrse = get_tours(filename="tours.csv",type = type, country = country)
-#print(tyrse)
+            tours.append(line)
+    return tours
