@@ -11,16 +11,28 @@
 # Такое подключение лучше, т.к. не нужно писать название модуля, а просто название функции
 from tours_context import *
 from UserAction import *
-print("Как вы хотите использовать программу")
-print("1 - Найти тур")
-print("2 - Добавить новый тур")
-print("3 - Показать все туры")
-print("0 - Выход")
 
-choice = int(input())
-if choice == 1:
-    tours = []
-    tours = find_a_tour()
-    format_print_tour(tours)
-if choice == 3:
-    find_all()
+toggle = 0
+while toggle == 0:
+    print("Выберите действие")
+    print("1 - Найти тур")
+    print("2 - Добавить новый тур")
+    print("3 - Показать все туры")
+    print("0 - Выход")
+
+    choice1 = int(input())
+
+    if choice1 == 1:
+        tours = []
+        tours = find_a_tour()
+        format_print_tour(tours)
+    if choice1 == 2:
+        tours = []
+        tours = read_file(filename='tours.csv')
+        add_new_tour(tours)
+    if choice1 == 3:
+        find_all()
+    print('Вы хотите продолжить использование программы?')
+    choice2 = input()
+    if choice2 == "Yes" or choice2 == "Yes" or choice2 == "Да" or choice2 == "да" or  choice2 == "Da" or  choice2 == "da":
+        toggle == 1

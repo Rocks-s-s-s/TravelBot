@@ -1,14 +1,27 @@
 from tours_context  import *
 def format_print_tour(tours):
     x = 0
-    data = []
-    data =read_file(filename='tours.csv')
-    elemenysData = []
-    for i in data[0]:
-        elemenysData[i] = data[i]
-    for i in tours:
-        print(elemenysData[x]+"-"+tours[i])
+    elementsData = read_header()
+    for line in tours[0]:
+        print('%-22s - %s' % (elementsData[x],line))
+        x = x+1
 
+def add_new_tour(tours):
+    line = []
+    elementsData = read_header()
+    for i in range(7):
+        print('%7s %5s' % ('Введите', elementsData[i]))
+        line.append(input())
+    tours.append(line)
+    write_file(tours,filename='tours.csv')
+
+def read_header():
+    data = []
+    data = read_file(filename='tours.csv')
+    elementsData = []
+    for item in data[0]:
+        elementsData.append(item)
+    return elementsData
 def find_all():
     data = []
     data = read_file(filename='tours.csv')
