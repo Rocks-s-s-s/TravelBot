@@ -3,15 +3,15 @@ def read_file(filename):
     data = []
     for line in file:
         data.append(line.strip().split(','))
+    file.close()
     return data
 
-def write_file(data,filename):
+
+def write_file(data, filename):
     file = open(filename, encoding='utf-8', mode="w")
     for line in data:
-        fileline = ''
-        #for i in range(8):
-            #fileline = fileline + str(line[i]) + ','
-        file.write(','.join(line) + '\n')
+        file.write(f'{",".join(line)}\n')
+    file.close()
 
 
 def get_types_rest(filename):
