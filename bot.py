@@ -13,7 +13,7 @@ from tours_context import *
 from UserAction import *
 
 toggle = 0
-while toggle == 0:
+while toggle != 1:
     print("Выберите действие")
     print("1 - Найти тур")
     print("2 - Добавить новый тур")
@@ -34,5 +34,5 @@ while toggle == 0:
         find_all()
     print('Вы хотите продолжить использование программы?')
     choice2 = input()
-    if choice2 == "Yes" or choice2 == "Yes" or choice2 == "Да" or choice2 == "да" or  choice2 == "Da" or  choice2 == "da":
+    if choice2 == "No" or choice2 == "no" or choice2 == "Нет" or choice2 == "нет" or  choice2 == "-" :
         toggle == 1

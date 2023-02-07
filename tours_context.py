@@ -9,9 +9,9 @@ def write_file(data,filename):
     file = open(filename, encoding='utf-8', mode="w")
     for line in data:
         fileline = ''
-        for i in range(8):
-            fileline = fileline + str(line[i]) + ','
-        file.write(fileline + '\n')
+        #for i in range(8):
+            #fileline = fileline + str(line[i]) + ','
+        file.write(','.join(line) + '\n')
 
 
 def get_types_rest(filename):
