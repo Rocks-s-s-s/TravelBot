@@ -1,7 +1,7 @@
 """
     TODO: 1. Переделать функцию print_tours()
           2. Сделать форматированый вывод найденных туров и всех туров
-             Мы используем новое форматирование через f''
+             Мы используем новое форматирование через f''+
 """
 from user_action import *
 
@@ -19,6 +19,6 @@ while True:
     if choice == 2:
         add_new_tour(read_file(filename='tours.csv'))
     if choice == 3:
-        print_all()
+        print_tours()
     if choice == 0:
         break

@@ -1,8 +1,12 @@
 from tours_context import *
 
 
-def print_tours(tours):
-    pass
+def print_tours():
+    data = read_file(filename='tours.csv')
+    print('-----------------------------------------------------------------------------------------------------------')
+    for line in data:
+        print(f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {line[3]:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
+        print('|---------------------------------------------------------------------------------------------------------|')
     # TODO: Вывод таблицы туров
 
 
@@ -25,7 +29,7 @@ def print_all():
 
 def find_a_tour():
     filename = 'tours.csv'
-    types = get_types_rest(filename)
+    types = list(get_types_rest(filename))
     countries = []
     num = 0
     correct_input = False
@@ -34,13 +38,13 @@ def find_a_tour():
     for line in types:
         num += 1
         # TODO: Использовать f'' форматирование
-        print('%d - %s' % (num, line))
+        print(f'{num} - {line}')
     print('> ', end='')
     while not correct_input:
         choice = int(input())
         if choice <= len(types):
             # TODO: Использовать f'' форматирование
-            print("Выбран тип отдыха - ", types[choice - 1])
+            print(f'Выбран тип отдыха - {types[choice-1]}')
             save_type = choice
             correct_input = True
         else:
@@ -53,13 +57,13 @@ def find_a_tour():
         num += 1
         countries.append(line)
         # TODO: Использовать f'' форматирование
-        print('%d - %s' % (num, line))
+        print(f'{num} - {line}')
     print('> ', end='')
     while not correct_input:
         choice = int(input())
         if choice <= len(countries):
             # TODO: Использовать f'' форматирование
-            print("Выбранная страна - ", countries[choice - 1])
+            print(f"Выбранная страна - {countries[choice - 1]}")
             correct_input = True
         else:
             print("Некорректный ввод")
