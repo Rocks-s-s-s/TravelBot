@@ -1,13 +1,13 @@
 from tours_context import *
 
 
+# TODO: Должна принемать туры для вывода в виде массива туров (нре из файла)
 def print_tours():
     data = read_file(filename='tours.csv')
     print('-----------------------------------------------------------------------------------------------------------')
     for line in data:
         print(f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {line[3]:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
         print('|---------------------------------------------------------------------------------------------------------|')
-    # TODO: Вывод таблицы туров
 
 
 def add_new_tour(tours):
@@ -37,13 +37,11 @@ def find_a_tour():
     print('Выберите тип отдыха (для выбора типа отдыха введите его номер):')
     for line in types:
         num += 1
-        # TODO: Использовать f'' форматирование
         print(f'{num} - {line}')
     print('> ', end='')
     while not correct_input:
         choice = int(input())
         if choice <= len(types):
-            # TODO: Использовать f'' форматирование
             print(f'Выбран тип отдыха - {types[choice-1]}')
             save_type = choice
             correct_input = True
@@ -56,13 +54,11 @@ def find_a_tour():
     for line in country:
         num += 1
         countries.append(line)
-        # TODO: Использовать f'' форматирование
         print(f'{num} - {line}')
     print('> ', end='')
     while not correct_input:
         choice = int(input())
         if choice <= len(countries):
-            # TODO: Использовать f'' форматирование
             print(f"Выбранная страна - {countries[choice - 1]}")
             correct_input = True
         else:
