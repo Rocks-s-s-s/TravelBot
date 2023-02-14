@@ -18,6 +18,8 @@ while True:
     if choice == 2:
         add_new_tour(read_file(filename='tours.csv'))
     if choice == 3:
-        print_tours()
+        data = []
+        data = read_all_file()
+        print_tours(data)
     if choice == 0:
         break
