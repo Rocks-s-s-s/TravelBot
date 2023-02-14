@@ -1,6 +1,7 @@
 """
-    TODO: 1. Переделать функцию print_tours()
-          2. (Попробовать) Добавить файл с типами отдыха. В главной таблице будет указываться номер типа отдыха.
+    TODO: 1. (Продолжить...) Добавить файл с типами отдыха (Номер типа, Название типа).
+             В главной таблице будет указываться номер типа отдыха.
+             Это, по идее, очень сильно повлияет на весь код.
 """
 from user_action import *
 
@@ -18,8 +19,6 @@ while True:
     if choice == 2:
         add_new_tour(read_file(filename='tours.csv'))
     if choice == 3:
-        data = []
-        data = read_all_file()
-        print_tours(data)
+        print_tours(read_all_file())
     if choice == 0:
         break
