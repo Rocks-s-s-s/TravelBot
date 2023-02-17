@@ -17,7 +17,7 @@ def write_file(data, filename):
 def get_types_rest(filename):
     # Читаем данные из файла
     # С помощью среза избавляемся от заголовков
-    filedata = read_file(filename)[1:]
+    filedata = read_file(filename)
     # Используем set() множество для того, чтобы выделить уникальные строки
     types = set()
     for line in filedata:
@@ -26,7 +26,7 @@ def get_types_rest(filename):
 
 
 def get_country_by_type(filename, type):
-    filedata = read_file(filename)[1:]
+    filedata = read_file(filename)
     country = set()
     for line in filedata:
         if type == line[3]:
@@ -35,7 +35,7 @@ def get_country_by_type(filename, type):
 
 
 def get_tours(filename, type, country):
-    filedata = read_file(filename)[1:]
+    filedata = read_file(filename)
     tours = []
     for line in filedata:
         if country == line[0] and type == line[3]:

@@ -2,9 +2,17 @@ from tours_context import *
 
 
 def print_tours(data):
+    title = read_file("title.csv")
+    type = read_file("type.csv")
+    type_name = ''
     print('-----------------------------------------------------------------------------------------------------------')
+    print(f'| {title[0]:10} | {title[1]:10} | {title[2]:15} | {title:15} | {title[4]:10} | {title[5]:11} | {title[6]:14} |')
     for line in data:
-        print(f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {line[3]:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
+        for line2 in type:
+            if line[3] == line2[0]:
+                type_name = line2[1]
+
+        print(f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {type_name:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
         print('|---------------------------------------------------------------------------------------------------------|')
 
 
