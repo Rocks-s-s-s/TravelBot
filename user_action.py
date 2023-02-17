@@ -2,6 +2,8 @@ from tours_context import *
 
 
 def print_tours(data):
+    # TODO: Совершенно непонятное дело. Для чего делать таблицу заголовков другой таблицы?
+    #       1. Первая строка данных - это заголовки.
     title = read_file("title.csv")
     type = read_file("type.csv")
     type_name = ''
@@ -32,10 +34,7 @@ def add_new_tour(tours):
 
 
 def print_all():
-    # TODO: Это не форматированный вывод. Для вывода всех туров, нужно взять туры и вывести их функцией print_tours()
-    data = read_file(filename='tours.csv')
-    for line in data:
-        print(line)
+    print_tours(read_file(filename='tours.csv'))
 
 
 def find_a_tour():
