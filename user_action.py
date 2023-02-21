@@ -4,18 +4,18 @@ from tours_context import *
 def print_tours(data):
     # TODO: Совершенно непонятное дело. Для чего делать таблицу заголовков другой таблицы?
     #       1. Первая строка данных - это заголовки.
-    title = read_file("title.csv")
-    type = read_file("type.csv")
-    type_name = ''
+    title = ["Страна", "Город", "Название тура", "Тип отдыха", "Стоимость", "Дата начала", "Дата окончания"]
+    type = dict([(k, v) for k, v in read_file("type.csv")])
     print('-----------------------------------------------------------------------------------------------------------')
-    print(f'| {title[0]:10} | {title[1]:10} | {title[2]:15} | {title:15} | {title[4]:10} | {title[5]:11} | {title[6]:14} |')
+    print(
+        f'| {title[0]:10} | {title[1]:10} | {title[2]:15} | {title[3]:15} | {title[4]:10} | {title[5]:11} | {title[6]:14} |')
+    print(
+        '|---------------------------------------------------------------------------------------------------------|')
     for line in data:
-        for line2 in type:
-            if line[3] == line2[0]:
-                type_name = line2[1]
-
-        print(f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {type_name:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
-        print('|---------------------------------------------------------------------------------------------------------|')
+        print(
+            f'| {line[0]:10} | {line[1]:10} | {line[2]:15} | {type[line[3]]:15} | {line[4]:10} | {line[5]:11} | {line[6]:14} |')
+        print(
+            '|---------------------------------------------------------------------------------------------------------|')
 
 
 def read_all_file():
@@ -52,7 +52,7 @@ def find_a_tour():
     while not correct_input:
         choice = int(input())
         if choice <= len(types):
-            print(f'Выбран тип отдыха - {types[choice-1]}')
+            print(f'Выбран тип отдыха - {types[choice - 1]}')
             save_type = choice
             correct_input = True
         else:
