@@ -3,7 +3,7 @@ from tours_context import *
 
 def print_tours(data):
     title = ["Страна", "Город", "Название тура", "Тип отдыха", "Стоимость", "Дата начала", "Дата окончания"]
-    type = get_typs()
+    type = get_types()
     print('-----------------------------------------------------------------------------------------------------------')
     print(
         f'| {title[0]:10} | {title[1]:10} | {title[2]:15} | {title[3]:15} | {title[4]:10} | {title[5]:11} | {title[6]:14} |')
@@ -17,7 +17,7 @@ def print_tours(data):
 
 
 def read_all_file():
-    data = read_file("tours.csv")
+    data = read_file("tours_1000000.csv")
     return data
 
 
@@ -26,22 +26,21 @@ def read_all_file():
 #       в таблицу типов и также, возвращать его код.
 def add_new_tour(tours):
     line = []
-    headers = read_file('tours.csv')[0]
+    headers = ["Страна", "Город", "Название тура", "Тип отдыха", "Стоимость", "Дата начала", "Дата окончания"]
     for head in headers:
-        print(f'Введите: {head}')
+        print(f'Введите {head}: ')
         line.append(input())
     tours.append(line)
     write_file(tours, filename='tours.csv')
 
 
 def print_all():
-    print_tours(read_file(filename='tours.csv'))
+    print_tours(read_file(filename='tours_1000000.csv'))
 
 
 def find_a_tour():
-    filename = 'tours.csv'
-    types = get_typs()
-    print(types)
+    filename = 'tours_1000000.csv'
+    types = get_types()
     countries = []
     num = 0
     correct_input = False
