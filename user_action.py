@@ -3,7 +3,7 @@ from tours_context import *
 
 def print_tours(data):
     title = ["Страна", "Город", "Название тура", "Тип отдыха", "Стоимость", "Дата начала", "Дата окончания"]
-    type = dict([(k, v) for k, v in read_file("type.csv")])
+    type = get_typs()
     print('-----------------------------------------------------------------------------------------------------------')
     print(
         f'| {title[0]:10} | {title[1]:10} | {title[2]:15} | {title[3]:15} | {title[4]:10} | {title[5]:11} | {title[6]:14} |')
@@ -40,7 +40,8 @@ def print_all():
 
 def find_a_tour():
     filename = 'tours.csv'
-    types = list(get_types_rest(filename))
+    types = get_typs()
+    print(types)
     countries = []
     num = 0
     correct_input = False
@@ -50,16 +51,16 @@ def find_a_tour():
         num += 1
         print(f'{num} - {line}')
     print('> ', end='')
-    while not correct_input:
-        choice = int(input())
-        if choice <= len(types):
-            print(f'Выбран тип отдыха - {types[choice - 1]}')
-            save_type = choice
-            correct_input = True
-        else:
-            print("Некорректный ввод")
+
+    choice = input()
+    if choice in types:
+        print(f'Выбран тип отдыха - {types[choice]}')
+        save_type = choice
+
+    else:
+        print("Некорректный ввод")
     correct_input = False
-    country = get_country_by_type(filename, types[choice - 1])
+    country = get_country_by_type(filename, types[choice])
     print('Выберите страну (для выбора страны введите её номер): ')
     num = 0
     for line in country:
@@ -70,10 +71,10 @@ def find_a_tour():
     while not correct_input:
         choice = int(input())
         if choice <= len(countries):
-            print(f"Выбранная страна - {countries[choice - 1]}")
+            print(f"Выбранная страна - {countries[choice]}")
             correct_input = True
         else:
             print("Некорректный ввод")
 
-    tours = get_tours(filename, types[save_type - 1], countries[choice - 1])
+    tours = get_tours(filename, types[save_type], countries[choice - 1])
     return tours

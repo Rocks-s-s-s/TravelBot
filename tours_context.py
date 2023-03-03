@@ -13,13 +13,17 @@ def write_file(data, filename):
         file.write(f'{",".join(line)}\n')
     file.close()
 
+def get_typs():
+    type = {}
+    filetype = read_file("type.csv")
+    for line in filetype:
+        type[line[0]] = line[1]
+    return type
+
 
 def get_types_rest(filename):
-    # Читаем данные из файла
-    # С помощью среза избавляемся от заголовков
+    types = {}
     filedata = read_file(filename)
-    # Используем set() множество для того, чтобы выделить уникальные строки
-    types = set()
     for line in filedata:
         types.add(line[3])
     return types
