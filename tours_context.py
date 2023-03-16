@@ -30,8 +30,9 @@ def get_types():
 def get_country_by_type(filename, type):
     filedata = read_file(filename)
     country = set()
+    types = get_types()
     for line in filedata:
-        if type == line[3]:
+        if type == types[line[3]]:
             country.add(line[0])
     return country
 
