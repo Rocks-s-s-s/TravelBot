@@ -37,14 +37,32 @@ def read_all_file():
 #       Значит нужно проверять есть ли такой тип отдыха и, если есть, возвращать его код, а если нет, то добавлять его
 #       в таблицу типов и также, возвращать его код.
 def add_new_tour(tours):
-    line = []
+    lines = []
     file = read_file("type.csv")
     headers = ["Страна", "Город", "Название тура", "Тип отдыха", "Стоимость", "Дата начала", "Дата окончания"]
     for head in headers:
         print(f'Введите {head}: ')
-        line.append(input())
-    tours.append(line)
+        x = input()
+        t =0
+        if head == "Тип отдыха":
+            for line in file:
+                if x == line[1]:
+                    lines.append(file[0])
+                    t+=1
+            if t ==0:
+                s =str(int(line[0]) + 1) +","+ x
+                add_new_type(s)
+                lines.append(int(line[0]) + 1)
+                print(lines[3])
+        else:
+            lines.append(x)
+
+    tours.append(lines)
     write_file(tours, filename='tours.csv')
+
+def add_new_type(file):
+    types =open('type.csv', encoding='utf-8', mode="a")
+    types.write(f'\n{file}')
 
 
 def print_all():

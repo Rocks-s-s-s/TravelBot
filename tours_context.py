@@ -15,11 +15,13 @@ def read_file(filename):
 def write_file(data, filename):
     file = open(filename, encoding='utf-8', mode="w")
     for line in data:
+        line = [str(i) for i in line]
         file.write(f'{",".join(line)}\n')
     file.close()
 
 
 def get_types():
+    #создаём словарь
     type = {}
     filetype = read_file("type.csv")
     for line in filetype:
@@ -34,6 +36,8 @@ def get_country_by_type(filename, type):
     for line in filedata:
         if type == types[line[3]]:
             country.add(line[0])
+    country = sorted(list(country))
+
     return country
 
 
